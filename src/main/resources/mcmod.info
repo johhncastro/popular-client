@@ -1,0 +1,16 @@
+[
+{
+  "modid": "popular",
+  "name": "Popular",
+  "description": "Popular - A modern client-side mod for Minecraft 1.8.9 with combat, render, and movement enhancements.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Popular"],
+  "credits": "Minecraft Forge",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

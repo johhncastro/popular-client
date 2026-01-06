@@ -216,13 +216,86 @@ public class ModMenuGUI extends GuiScreen {
     }
     
     private Window createRenderWindow(int windowX, int windowY, int screenWidth, int screenHeight) {
-        int windowWidth = 150; // Minimum width
-        int windowHeight = 150;
+        int windowWidth = 200; // Increased width to match other windows
+        int windowHeight = 250; // Increased height for expandable settings
         
         Window window = new Window(windowX, windowY, windowWidth, windowHeight, "Render", accentColor);
         
-        // Placeholder for render mods
-        // Example: ESP, Tracers, Nametags, etc.
+        // Chest ESP (expandable with color settings)
+        final ExpandableMod[] chestESPRef = new ExpandableMod[1];
+        chestESPRef[0] = new ExpandableMod(
+            0, 0, windowWidth - 16,
+            "Chest ESP",
+            configManager.getConfig().chestESPEnabled,
+            new Runnable() {
+                @Override
+                public void run() {
+                    configManager.getConfig().chestESPEnabled = !configManager.getConfig().chestESPEnabled;
+                    configManager.saveConfig();
+                    chestESPRef[0].setValue(configManager.getConfig().chestESPEnabled);
+                }
+            },
+            accentColor
+        );
+        
+        // Red color slider
+        final Slider[] redSliderRef = new Slider[1];
+        redSliderRef[0] = new Slider(
+            0, 0, windowWidth - 16,
+            "Red",
+            configManager.getConfig().chestESPRed,
+            0.0, 255.0,
+            new Runnable() {
+                @Override
+                public void run() {
+                    configManager.getConfig().chestESPRed = (int)redSliderRef[0].getValue();
+                    configManager.saveConfig();
+                }
+            },
+            accentColor
+        );
+        chestESPRef[0].addSetting(redSliderRef[0]);
+        
+        // Green color slider
+        final Slider[] greenSliderRef = new Slider[1];
+        greenSliderRef[0] = new Slider(
+            0, 0, windowWidth - 16,
+            "Green",
+            configManager.getConfig().chestESPGreen,
+            0.0, 255.0,
+            new Runnable() {
+                @Override
+                public void run() {
+                    configManager.getConfig().chestESPGreen = (int)greenSliderRef[0].getValue();
+                    configManager.saveConfig();
+                }
+            },
+            accentColor
+        );
+        chestESPRef[0].addSetting(greenSliderRef[0]);
+        
+        // Blue color slider
+        final Slider[] blueSliderRef = new Slider[1];
+        blueSliderRef[0] = new Slider(
+            0, 0, windowWidth - 16,
+            "Blue",
+            configManager.getConfig().chestESPBlue,
+            0.0, 255.0,
+            new Runnable() {
+                @Override
+                public void run() {
+                    configManager.getConfig().chestESPBlue = (int)blueSliderRef[0].getValue();
+                    configManager.saveConfig();
+                }
+            },
+            accentColor
+        );
+        chestESPRef[0].addSetting(blueSliderRef[0]);
+        
+        window.addChild(chestESPRef[0]);
+        
+        // Placeholder for other render mods
+        // Example: Player ESP, Tracers, Nametags, etc.
         
         return window;
     }

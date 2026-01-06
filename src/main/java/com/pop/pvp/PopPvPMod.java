@@ -45,6 +45,10 @@ public class PopPvPMod {
         Sprint sprint = new Sprint(configManager);
         MinecraftForge.EVENT_BUS.register(sprint);
         
+        // Initialize chest ESP
+        ChestESP chestESP = new ChestESP(configManager);
+        MinecraftForge.EVENT_BUS.register(chestESP);
+        
         // Initialize HUD overlay
         HUDOverlay hudOverlay = new HUDOverlay(configManager);
         MinecraftForge.EVENT_BUS.register(hudOverlay);

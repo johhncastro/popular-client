@@ -117,6 +117,11 @@ public class HUDOverlay {
             enabledMods.add("Sprint");
         }
         
+        // Check chest ESP
+        if (configManager.getConfig().chestESPEnabled) {
+            enabledMods.add("Chest ESP");
+        }
+        
         // Add more mods here as they are created
         // Example:
         // if (configManager.getConfig().someOtherModEnabled) {

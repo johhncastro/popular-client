@@ -70,6 +70,11 @@ public class ConfigManager {
         public double autoClickerMinCPS = 18.1; // Minimum CPS
         public double autoClickerMaxCPS = 22.14; // Maximum CPS
         public boolean sprintEnabled = false; // Sprint mod enabled
+        public boolean chestESPEnabled = false; // Chest ESP mod enabled
+        // Chest ESP color settings
+        public int chestESPRed = 100;   // 0-255
+        public int chestESPGreen = 150; // 0-255
+        public int chestESPBlue = 255;  // 0-255 (cyan/blue default)
         public int toggleKey = 46; // C key by default
         public boolean showVersion = false; // Show mod name/version in HUD
         // UI Theme settings
@@ -121,6 +126,14 @@ public class ConfigManager {
     public int getAccentColor() {
         ModConfig config = getConfig();
         return (config.accentColorRed << 16) | (config.accentColorGreen << 8) | config.accentColorBlue;
+    }
+    
+    /**
+     * Gets the chest ESP color as an RGB integer.
+     */
+    public int getChestESPColor() {
+        ModConfig config = getConfig();
+        return (config.chestESPRed << 16) | (config.chestESPGreen << 8) | config.chestESPBlue;
     }
 }
 
